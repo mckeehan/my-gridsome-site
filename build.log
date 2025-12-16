@@ -1,0 +1,69 @@
+#gatsby clean
+rm -f build
+gridsome build
+Gridsome v0.7.23
+
+Initializing plugins...
+Album: retrieved 355 results
+ParentAlbums: retrieved 355 results
+Photo: retrieved 10508 results
+Load sources - 9.83s
+Create GraphQL schema - 0.52s
+Create pages and templates - 1.66s
+Generate temporary code - 5.88s
+Bootstrap finish - 67.89s
+Compiling assets...
+Compile assets - 116.28s
+unable to find prism language 'config' for highlighting. applying generic code block
+unable to find prism language 'conf' for highlighting. applying generic code block
+unable to find prism language 'yaml:dbfolder' for highlighting. applying generic code block
+Execute GraphQL (11206 queries) - 26.8s
+
+<--- Last few GCs --->
+
+[13963:0x7fb847a00000]   243235 ms: Mark-Compact (reduce) 2035.4 (2093.4) -> 2032.2 (2093.4) MB, 59.42 / 0.04 ms  (+ 3317.2 ms in 727 steps since start of marking, biggest step 162.1 ms, walltime since start of marking 4838 ms) (average mu = 0.628, curren[13963:0x7fb847a00000]   243430 ms: Scavenge 2033.2 (2093.4) -> 2032.3 (2096.4) MB, 9.77 / 0.00 ms  (average mu = 0.628, current mu = 0.699) allocation failure; 
+
+
+<--- JS stacktrace --->
+
+FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
+ 1: 0x1074a26a5 node::Abort() [/usr/local/bin/node]
+ 2: 0x1074a2886 node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/usr/local/bin/node]
+ 3: 0x107651c5c v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [/usr/local/bin/node]
+ 4: 0x107841ea7 v8::internal::Heap::FatalProcessOutOfMemory(char const*) [/usr/local/bin/node]
+ 5: 0x107840709 v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [/usr/local/bin/node]
+ 6: 0x107834f71 v8::internal::HeapAllocator::AllocateRawWithLightRetrySlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/usr/local/bin/node]
+ 7: 0x1078359b5 v8::internal::HeapAllocator::AllocateRawWithRetryOrFailSlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/usr/local/bin/node]
+ 8: 0x10781729c v8::internal::Factory::AllocateRaw(int, v8::internal::AllocationType, v8::internal::AllocationAlignment) [/usr/local/bin/node]
+ 9: 0x10780aac4 v8::internal::FactoryBase<v8::internal::Factory>::NewFixedArrayWithFiller(v8::internal::Handle<v8::internal::Map>, int, v8::internal::Handle<v8::internal::Oddball>, v8::internal::AllocationType) [/usr/local/bin/node]
+10: 0x107b53e99 v8::internal::Handle<v8::internal::NameDictionary> v8::internal::HashTable<v8::internal::NameDictionary, v8::internal::NameDictionaryShape>::EnsureCapacity<v8::internal::Isolate>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::NameDictionary>, int, v8::internal::AllocationType) [/usr/local/bin/node]
+11: 0x107b54c14 v8::internal::Handle<v8::internal::NameDictionary> v8::internal::Dictionary<v8::internal::NameDictionary, v8::internal::NameDictionaryShape>::Add<v8::internal::Isolate>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::NameDictionary>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyDetails, v8::internal::InternalIndex*) [/usr/local/bin/node]
+12: 0x107b5488b v8::internal::BaseNameDictionary<v8::internal::NameDictionary, v8::internal::NameDictionaryShape>::Add(v8::internal::Isolate*, v8::internal::Handle<v8::internal::NameDictionary>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyDetails, v8::internal::InternalIndex*) [/usr/local/bin/node]
+13: 0x107c9ccb8 v8::internal::Runtime_AddDictionaryProperty(int, unsigned long*, v8::internal::Isolate*) [/usr/local/bin/node]
+14: 0x1080679f6 Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit [/usr/local/bin/node]
+
+<--- Last few GCs --->
+
+[13964:0x7fd18b900000]   257386 ms: Mark-Compact (reduce) 2034.8 (2094.1) -> 2033.8 (2093.9) MB, 1513.74 / 0.00 ms  (average mu = 0.142, current mu = 0.058) allocation failure; scavenge might not succeed
+[13964:0x7fd18b900000]   258985 ms: Mark-Compact (reduce) 2035.1 (2093.9) -> 2034.0 (2094.1) MB, 1427.83 / 0.00 ms  (average mu = 0.125, current mu = 0.107) allocation failure; scavenge might not succeed
+
+
+<--- JS stacktrace --->
+
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+ 1: 0x10697d6a5 node::Abort() [/usr/local/bin/node]
+ 2: 0x10697d886 node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/usr/local/bin/node]
+ 3: 0x106b2cc5c v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [/usr/local/bin/node]
+ 4: 0x106d1cea7 v8::internal::Heap::FatalProcessOutOfMemory(char const*) [/usr/local/bin/node]
+ 5: 0x106d21477 v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector) [/usr/local/bin/node]
+ 6: 0x106d1d7c5 v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::internal::GarbageCollectionReason, char const*) [/usr/local/bin/node]
+ 7: 0x106d1b260 v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [/usr/local/bin/node]
+ 8: 0x106d0ff71 v8::internal::HeapAllocator::AllocateRawWithLightRetrySlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/usr/local/bin/node]
+ 9: 0x106d109b5 v8::internal::HeapAllocator::AllocateRawWithRetryOrFailSlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/usr/local/bin/node]
+10: 0x106cf2aa2 v8::internal::Factory::NewFillerObject(int, v8::internal::AllocationAlignment, v8::internal::AllocationType, v8::internal::AllocationOrigin) [/usr/local/bin/node]
+11: 0x107170ad0 v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [/usr/local/bin/node]
+12: 0x1075429f6 Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit [/usr/local/bin/node]
+13: 0x1184b253d 
+14: 0x11676a5bf 
+15: 0x1184bc1cf 
+16: 0x114a07b77 
