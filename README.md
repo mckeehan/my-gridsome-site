@@ -21,5 +21,6 @@ FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memor
 I had not even began adding tags indexing of my photos which would dramatically increase the number of pages.
 
 This site generation was done on an older mac mini, so it is entirely possible that I just need a better machine, but the gatsby site continues to generate on this hardware, so...
+![neofetch from the mini](neofetch-mini.jpg)
 
 I also had not started looking the mapping aspects (except to learn that there is no good way to use leaflet in gridsome).
