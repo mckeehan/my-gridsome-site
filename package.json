@@ -12,7 +12,7 @@
     "@gridsome/transformer-yaml": "^0.2.1",
     "bootstrap": "^5.3.8",
     "bootstrap-vue": "^2.23.1",
-    "gridsome": "^0.7.0",
+    "gridsome": "^0.7.23",
     "gridsome-plugin-remark-prismjs-all": "^0.4.8",
     "gridsome-source-mysql": "^1.5.4"
   }

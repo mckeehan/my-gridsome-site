@@ -1,10 +1,11 @@
+SRCS := $(shell find src -name "*.vue")
 
 all: build
 
 package-lock.json: package.json
 	npm install
 
-build: package-lock.json
+build: package-lock.json gridsome.server.js gridsome.config.js src/main.js $(SRCS)
 	gridsome build
 	touch build
 

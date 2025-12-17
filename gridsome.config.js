@@ -31,16 +31,29 @@ module.exports = {
       use: 'gridsome-source-mysql',
       options: {
         connection: {
-          host: 'localhost',
-          socketPath: '/tmp/mysql.sock',
+          host: 'mini.local',
           port: 3307,
-          user: 'digikamdb',
+          user: 'digikamdb-remote',
           password: process.env.MYSQL_PASSWORD,
           database: 'digikam4'
         },
         queries: [
           {
-            sql: `SELECT image_id as id, album_id as parentAlbums_id, album_path as album_path, substring_index(album_path, '/', -1) as album_title, album_caption, collection, album_date, image_name, image_path, image_title, image_caption, creationDate, modificationDate, make, model, lens, aperture, focalLength, exposureTime, sensitivity, meteringMode, latitudeNumber, longitudeNumber, 0 as num_images, replace(replace(replace(replace(concat('https://ki4hdu.com/pics/thumbnails', image_path, '/', image_name), '.JPG', '-1024x768.JPG'), '.jpg', '-1024x768.jpg'), ' ', '%20'), '.HEIC', '-1024x768.JPG') as full_image_path FROM ImagesView`,
+            sql: `SELECT id, pid as photoTag_id, name,
+              CONCAT(GetAncestry(pid), '/', name) AS tag_full
+              FROM Tags
+              WHERE
+                id != 0
+               AND
+                id != 1 AND pid != 1
+               AND
+                id != 110 AND pid != 110
+              `,
+            name: 'PhotoTag',
+            path: 'id'
+          },
+          {
+            sql: `SELECT image_id as id, album_id as parentAlbums_id, album_path as album_path, substring_index(album_path, '/', -1) as album_title, album_caption, collection, album_date, image_name, image_path, image_title, image_caption, creationDate, modificationDate, make, model, lens, aperture, focalLength, exposureTime, sensitivity, meteringMode, latitudeNumber, longitudeNumber, 0 as num_images, replace(replace(replace(replace(concat('https://ki4hdu.com/pics/thumbnails', image_path, '/', image_name), '.JPG', '-1024x768.JPG'), '.jpg', '-1024x768.jpg'), ' ', '%20'), '.HEIC', '-1024x768.JPG') as full_image_path, ImageTagsGrouped.photoTag_ids FROM ImagesView LEFT OUTER JOIN ( SELECT  imageid, GROUP_CONCAT(tagid) as photoTag_ids FROM ImageTags GROUP by imageid) AS ImageTagsGrouped on ImageTagsGrouped.imageid = ImagesView.image_id`,
             name: 'Photo',
             path: 'image_name',
             refs: {
@@ -65,16 +78,24 @@ module.exports = {
     }  
   ],
   templates: {
+    PhotoTag: [
+      {
+        path: (node) => {
+          const name = node.tag_full.replaceAll(/'/g,"-").replace(/[|&;$%@"<>()+,]/g, "").replaceAll(/ /g, '-').toLowerCase()
+          return `/phototags${name}`;
+        }
+      }
+    ],
     MarkdownPage: [
       {
         path: (node) => {
           const dir = node.fileInfo.directory.replace(/\s+/g, '-').toLowerCase();
           const name = node.fileInfo.name.replace(/\s+/g, '-').toLowerCase();
-          
-          if (dir) {
-            return `/${dir}/${name}`;
-          }
-          return `/${name}`;
+
+          return dir ? `/${dir}/${name}` : `/${name}`;
+        },
+        collection: (node) => {
+          return "stuff";
         }
       }
     ],

@@ -24,7 +24,11 @@
           currentPath += `/${segment}`;
         
           // Use a simple titleization for the text (e.g., 'my-page' becomes 'My Page')
-          const text = segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' ');
+          let text = segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' ');
+          if (text === 'Phototags') {
+            text = 'Photos';           
+            currentPath = '/photos';
+          }
         
           crumbs.push({
             to: currentPath,

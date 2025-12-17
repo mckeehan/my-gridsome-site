@@ -24,6 +24,7 @@
               :full_image_path=child.node.full_image_path
               :image_creationDate=child.node.creationDate
               :detailLink=child.node.path
+              :tags=child.node.photoTag
             />
           </template>
         </div>
@@ -61,6 +62,13 @@ query ($id: ID!) {
             creationDate(format: "MMMM D, YYYY")
             full_image_path
             path
+            album_path
+            album_title
+            photoTag {
+              id
+              path
+              name
+            }
           }
         }
       }
