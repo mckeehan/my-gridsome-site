@@ -48,7 +48,7 @@ query TopLevelGalleries {
     }
   }
   allAlbum(
-    filter: { parentAlbums_id: { eq: 1 } }
+    filter: { album_id: { eq: 1 } }
     sortBy: "album_date"
     order: DESC
   ) {

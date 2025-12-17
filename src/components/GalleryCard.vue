@@ -4,7 +4,7 @@
       <g-image loading="lazy" class="card-img-top" :src="image_path" :alt="album_name" />
       <div class="card-body p-4">
         <div class="badge bg-primary bg-gradient rounded-pill mb-2">{{ collection }}</div>
-        <g-link class="text-decoration-none link-dark stretched-link" :to="getAlbumPath(gallery_link)"><div class="h5 card-title mb-3">{{ album_name }}</div></g-link>
+        <g-link class="text-decoration-none link-dark stretched-link" :to="gallery_link"><div class="h5 card-title mb-3">{{ album_name }}</div></g-link>
       </div>
       <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
         <div class="d-flex align-items-end justify-content-between">
@@ -28,11 +28,5 @@ export default {
     'collection',
     'gallery_link',
   ],
-  methods: {
-    getAlbumPath(album_path) {
-      const name = album_path.replaceAll(/'/g,"-").replace(/[|&;$%@"<>()+,]/g, "").replaceAll(/ /g, '-').toLowerCase()
-      return `/photos/${name}`;
-    }
-  },
 }
 </script>

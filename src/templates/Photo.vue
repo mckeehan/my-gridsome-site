@@ -15,7 +15,7 @@
           <div class="col-lg-6">
           </div>
 		  <div id='image-metadata' class="col-lg-6">
-            Album: <g-link :to="$page.photo.album_path">{{ $page.photo.album_title }}</g-link><br/>
+            Album: <g-link :to="$page.photo.album?.path">{{ $page.photo.album?.album_title }}</g-link><br/>
 			<span>Creation Date: <span itemProp='dateCreated'>{{ $page.photo.creationDate }}</span><br/></span>
 			<span>Modification Date: <span itemProp='dateModified'>{{ $page.photo.modificationDate }}</span><br/></span>
 			<span>Camera: {{ $page.photo.make }} / {{ $page.photo.model }} <br/></span>
@@ -51,8 +51,6 @@
 query ($id: ID!) {
   photo(id: $id) {
     id
-    parentAlbums_id
-    album_path
     album_title
     image_name
     image_path
@@ -72,6 +70,11 @@ query ($id: ID!) {
     longitudeNumber
     path
     full_image_path
+    album {
+      id
+      album_title
+      path
+    }
     photoTag {
       id
       path
