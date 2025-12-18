@@ -49,6 +49,7 @@ query ($id: ID!) {
             }
             tags {
               id
+              path
             }
           }
         }
@@ -72,55 +73,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.tag-page {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.count {
-  color: #666;
-  margin-bottom: 2rem;
-}
-
-.page-list {
-  list-style: none;
-  padding: 0;
-}
-
-.page-list li {
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid #eee;
-}
-
-.page-list li:last-child {
-  border-bottom: none;
-}
-
-.page-list a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.page-list h3 {
-  margin-bottom: 0.5rem;
-  color: #2c3e50;
-}
-
-.page-list h3:hover {
-  color: #42b983;
-}
-
-.page-list p {
-  color: #666;
-  margin-bottom: 0.5rem;
-}
-
-.page-list time {
-  color: #999;
-  font-size: 0.9rem;
-}
-</style>

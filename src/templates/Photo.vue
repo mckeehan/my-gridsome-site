@@ -3,13 +3,13 @@
 // ============================================
 <template>
   <Layout>
-    <section class="py-5">
+    <section class="py-5" itemscope itemtype="https://schema.org/ImageObject">
       <div class="container px-3">
-        <h2 class="fw-bolder fs-5 mb-4">{{ $page.photo.image_title || $page.photo.image_name }}</h2>
+        <h2 itemprop="name" class="fw-bolder fs-5 mb-4">{{ $page.photo.image_title || $page.photo.image_name }}</h2>
         <div class="position-relative mb-5 mx-0 text-center">
-          <g-image loading="lazy" class="img-fluid" :src="$page.photo.full_image_path"  :alt="$page.photo.image_title" />
+          <g-image loading="lazy" itemprop="contentUrl" class="img-fluid" :src="$page.photo.full_image_path"  :alt="$page.photo.image_title" />
         </div>
-        <div v-if="$page.photo.image_caption" class="position-relative mb-5">{{ $page.photo.image_caption }}</div>
+        <div v-if="$page.photo.image_caption" itemprop="description" class="position-relative mb-5">{{ $page.photo.image_caption }}</div>
 
         <div class="row">
           <div class="col-lg-6">
@@ -84,3 +84,12 @@ query ($id: ID!) {
 }
 </page-query>
 
+<script>
+export default {
+  metaInfo() {
+    return {
+      title: this.$page.photo.image_title || this.$page.photo.image_name
+    }
+  },
+}
+</script>

@@ -6,6 +6,20 @@
         <div class="badge bg-primary bg-gradient rounded-pill mb-2">{{ collection }}</div>
         <g-link class="text-decoration-none link-dark stretched-link" :to="path"><div class="h5 card-title mb-3">{{ title }}</div></g-link>
         <p class="card-text mb-0">{{ excerpt }}</p>
+
+            <div className="ms-3" v-if="tags">
+              <div class="tags">
+                <g-link 
+                  v-for="tag in tags" 
+                  :key="tag.id" 
+                  :to="tag.path"
+                  class="tag"
+                >
+                  {{ tag.id }}
+                </g-link>
+              </div>
+            </div> 
+
       </div>
       <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
         <div class="d-flex align-items-end justify-content-between">
@@ -38,32 +52,3 @@ export default {
   ]
 }
 </script>
-
-<style scoped>
-.meta {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.meta time {
-  color: #999;
-  font-size: 0.9rem;
-}
-
-.tags {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.tag {
-  background: #e0e0e0;
-  padding: 0.2rem 0.6rem;
-  border-radius: 1rem;
-  font-size: 0.8rem;
-  color: #666;
-}
-</style>
-

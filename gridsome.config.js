@@ -83,6 +83,9 @@ module.exports = {
         path: (node) => {
           const dir = node.fileInfo.directory.replace(/\s+/g, '-').toLowerCase();
           const name = node.fileInfo.name.replace(/\s+/g, '-').toLowerCase();
+          if ( name === 'index' ) {
+            return dir ? `/${dir}` : '/'; 
+          }
 
           return dir ? `/${dir}/${name}` : `/${name}`;
         },

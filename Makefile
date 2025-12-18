@@ -21,6 +21,9 @@ real-clean: clean
 	rm -rf node_modules package-lock.json
 	rm -rf .cache .temp
 
+serve: build
+	cd dist && serve
+
 publish: build
 	echo "Not implemented"
 

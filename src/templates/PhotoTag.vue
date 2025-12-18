@@ -97,5 +97,10 @@ export default {
     PhotoTagCard,
     ImageCard
   },
+  metaInfo() {
+    return {
+      title: this.$page.mytags.name
+    }
+  },
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="breadcrumb" aria-label="Breadcrumb">
+  <nav class="breadcrumb" aria-label="Breadcrumb" v-if="crumbs.length > 1">
     <ol class="breadcrumb__list">
       <template v-for="crumb in crumbs" >
         <li class="breadcrumb__list__item">

@@ -27,7 +27,7 @@
               :album_date=child.node.album_date
               :image_path=child.node.album_image_path
               :collection=child.node.collection
-              :gallery_link=child.node.album_path
+              :gallery_link=child.node.path
             />
           </template>
         </div>
